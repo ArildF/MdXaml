@@ -4,8 +4,12 @@
 	xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
 	xmlns:mde="clr-namespace:MdXaml.Ext;assembly=MdXaml"
 	>
+    <ControlTemplate TargetType="{x:Type ContentControl}" x:Key="ImageContentPresenterTemplate">
+        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          MaxHeight="500" MaxWidth="500"/>
+    </ControlTemplate>
 
-        <Style TargetType="FlowDocument" x:Key="DocumentStyleStandard" >
+    <Style TargetType="FlowDocument" x:Key="DocumentStyleStandard" >
         <Setter Property="FontFamily" Value="Calibri" />
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="PagePadding" Value="0" />
@@ -88,6 +92,15 @@
                 <Style.Triggers>
                     <Trigger Property="Tag" Value="imageright">
                         <Setter Property="Margin" Value="20,0,0,0" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            
+            <Style TargetType="{x:Type ContentControl}">
+                <Style.Triggers>
+                    <Trigger Property="Tag" Value="Image">
+                        <Setter Property="Template" Value="{DynamicResource ImageContentPresenterTemplate}"/>
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -268,6 +281,7 @@ it looks like the ruled lines are not doubled.
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            
 
             <Style TargetType="TableCell">
                 <Setter Property="BorderThickness" Value="0.5"/>

@@ -430,7 +430,9 @@ namespace MdXaml
                 image.Width = imgSource.Width;
             }
 
-            return new InlineUIContainer(image);
+            var contentControl = new ContentControl {Content = image, Tag = "Image"};
+
+            return new InlineUIContainer(contentControl);
         }
 
         private BitmapImage MakeImage(Uri url)
